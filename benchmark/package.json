@@ -1,18 +1,20 @@
 {
-  "name": "benchmark",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "benchmark": "^2.1.4"
-  },
-  "dependencies": {
-    "piscina": "^4.1.0",
-    "workerpool": "^6.5.1"
-  }
+    "name": "benchmark",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "benny": "^3.7.1"
+    },
+    "dependencies": {
+        "piscina": "^4.1.0",
+        "threads": "^1.7.0",
+        "tinypool": "^0.8.1",
+        "workerpool": "^6.5.1"
+    }
 }
