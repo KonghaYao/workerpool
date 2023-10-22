@@ -1,8 +1,11 @@
-import { spawn, Pool, Worker } from "threads"
+import { spawn, Pool, Worker, Transfer } from "threads"
+import createBenchmarkTest from "../createBenchmarkTest.mjs";
 export default (val, cpus, times) => {
     const pool = Pool(() => spawn(new Worker("./threads.worker.mjs")), cpus);
-    [...Array(cpus * times).keys()].forEach(() => pool.queue((m) => m(val)));
+    const records = createBenchmarkTest(val, (chunk) => pool.queue(async (m) => m(Transfer(chunk, [chunk.buffer]))))
     return pool.completed().then(() => {
-        return pool.terminate()
+        return records
+    }).finally(() => {
+        pool.terminate()
     })
 }

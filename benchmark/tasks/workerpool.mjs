@@ -1,7 +1,8 @@
 import { pool as _pool } from 'workerpool'
+import createBenchmarkTest from '../createBenchmarkTest.mjs'
 export default (val, cpus, times) => {
     const pool = _pool('./tasks/workerpool.worker.mjs', { maxWorkers: cpus })
-    return Promise.all([...Array(cpus * times).keys()].map((arr) => pool.exec('compute', [val]))).then(function (res) {
-        return pool.terminate()
+    return createBenchmarkTest(val, (chunk) => pool.exec('compute', [chunk], { transfer: [chunk.buffer] })).finally(() => {
+        pool.terminate()
     })
 }

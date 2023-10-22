@@ -1,3 +1,4 @@
-export default function (plaintext) {
-    return plaintext.split('').reverse().join('')
+import { convertTTFToWOFF2 } from '@napi-rs/ttf2woff2'
+export default function (buffer) {
+    return convertTTFToWOFF2(buffer)
 }

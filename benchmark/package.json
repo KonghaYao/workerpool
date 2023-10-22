@@ -12,6 +12,7 @@
         "benny": "^3.7.1"
     },
     "dependencies": {
+        "@napi-rs/ttf2woff2": "^0.0.5",
         "piscina": "^4.1.0",
         "threads": "^1.7.0",
         "tinypool": "^0.8.1",
